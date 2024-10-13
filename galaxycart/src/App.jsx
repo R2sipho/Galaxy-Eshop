@@ -6,7 +6,17 @@ import Category2 from './components/Category/Category2';
 import Services from './components/Services/Services';
 import Banner from './components/Banner/Banner';
 
+const BannerData = {
+  discount:"30% OFF",
+  title: "Fine Smile",
+  date: "10 Oct to 28 Nov",
+  image: headphone,
+  title2: "Air Solo Bass",
+  title3: "Sammer Sale",
+  title4: "Featuring a fully custom acoustic platform. Personalized spatial audio with dynamic head tracking.3 Fully adaptive Active Noise Cancelling. Transparency mode. Lossless audio.4 Up to 40 hours of battery life2 and enhanced Apple and Android compatibility.6",
+  bgColor: "#f42c37",
 
+};
 
 const App = () => {
   return <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden'>
@@ -15,7 +25,7 @@ const App = () => {
       <Category />
       <Category2 />
       <Services />
-      <Banner />
+      <Banner data={BannerData}/>
     </div>;
 };
 
