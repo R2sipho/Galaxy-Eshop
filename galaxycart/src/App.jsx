@@ -11,6 +11,9 @@ import smartwatch2 from "./assets/category/smartwatch2-removebg-preview.png";
 import Blogs from './components/Blogs/Blogs'; 
 import Partners from './components/Partners/Partners.jsx';
 import Footer from './components/Footer/Footer';
+import Popup from './components/Popup/Popup.jsx';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const BannerData = {
   discount:"30% OFF",
@@ -36,9 +39,29 @@ const BannerData2 = {
 
 };
 const App = () => {
-  return <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden'>
-      <Navbar />
-      <Hero />
+  const [orderPopup, setOrderPopup] = React.useState(false);
+
+const handleOrderPopup = () => {
+  setOrderPopup(!orderPopup);
+};
+
+React.useEffect(() => {
+  AOS.init(
+    {
+      duration: 1000,
+      easing: 'ease-in-sine',
+      delay: 100,
+      offset: 100,
+  });
+
+  AOS.refresh();
+
+},[]);
+
+  return ( 
+    <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden'>
+      <Navbar handleOrderPopup={handleOrderPopup} />
+      <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
       <Category2 />
       <Services />
@@ -48,7 +71,9 @@ const App = () => {
       <Blogs />
       <Partners />
       <Footer />
-    </div>;
+      <Popup orderPopup={orderPopup} handleOrderPopup={handleOrderPopup} />
+    </div>
+  );
 };
 
 export default App;
